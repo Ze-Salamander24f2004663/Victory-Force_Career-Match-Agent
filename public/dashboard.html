@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard - Hood Hub</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1 id="welcome">Welcome!</h1>
+
+  <section>
+    <h2>Registered Events</h2>
+    <div id="registeredEvents"></div>
+  </section>
+
+  <section>
+    <h2>Explore Events</h2>
+    <div id="exploreEvents"></div>
+  </section>
+
+  <section>
+    <h2>Host an Event</h2>
+    <form id="hostForm">
+      <input name="title" placeholder="Title" required><br>
+      <input name="type" placeholder="Type" required><br>
+      <input name="date" type="date" required><br>
+      <input name="location" placeholder="Location" required><br>
+      <button type="submit">Host Event</button>
+    </form>
+  </section>
+
+  <script>
+    // Load user name
+    fetch('/api/me')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('welcome').innerText = `Welcome, ${data.username}!`;
+      });
+
+    // Load events
+    fetch('/api/events')
+      .then(res => res.json())
+      .then(data => {
+        const regDiv = document.getElementById('registeredEvents');
+        const expDiv = document.getElementById('exploreEvents');
+
+        data.registered.forEach(event => {
+          regDiv.innerHTML += `<div>${event.title} - ${event.date}</div>`;
+        });
+
+        data.explore.forEach(event => {
+          expDiv.innerHTML += `
+            <div>
+              ${event.title} - ${event.date}
+              <button onclick="registerEvent('${event._id}')">Register</button>
+            </div>
+          `;
+        });
+      });
+
+    function registerEvent(eventId) {
+      fetch(`/api/register/${eventId}`, {
+        method: 'POST'
+      }).then(() => window.location.reload());
+    }
+
+    // Host new event
+    document.getElementById('hostForm').addEventListener('submit', e => {
+      e.preventDefault();
+      const form = e.target;
+      const data = {
+        title: form.title.value,
+        type: form.type.value,
+        date: form.date.value,
+        location: form.location.value
+      };
+
+      fetch('/api/host', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      }).then(() => window.location.reload());
+    });
+  </script>
+</body>
+</html>
