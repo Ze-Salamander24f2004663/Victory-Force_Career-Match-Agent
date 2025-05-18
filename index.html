@@ -2,35 +2,53 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hood Hub</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-  <!-- Header Section -->
   <header>
-    <div class="logo">Hood Hub</div>
-    <input type="text" id="searchBox" placeholder="Search events..." />
-    <button id="loginBtn">Login</button>
+    <div class="logo">HOOD HUB</div>
+    <input type="text" class="search" placeholder="Search..." />
+    <div class="auth-buttons">
+      <button class="btn">Login</button>
+      <button class="btn">Register</button>
+    </div>
   </header>
 
-  <!-- Main Event Grid -->
-  <main id="eventGrid">
-    <!-- One Event Card Example -->
-    <div class="event-card">
-  <img src="https://via.placeholder.com/300x150.png?text=Live+Music+Festival" alt="Live Music Festival" />
-  <div class="badge">Music</div>
-  <h3><a href="event-details.html">🎵 Live Music Festival</a></h3>
+  <main>
+    <section class="event-carousel">
+      <button class="arrow left" onclick="scrollLeft()">&#9664;</button>
 
-  <p>Experience live music, local food and beverages.</p>
-  <span class="location">Silver Auditorium, Ahmedabad</span>
+      <div class="event-cards" id="eventCards">
+  <!-- Event cards -->
+  <div class="event-card">
+    <h3><a href="#">Live Music Festival</a></h3>
+    <p><strong>Type:</strong> Music</p>
+    <p><strong>Date:</strong> Aug 14</p>
+    <p><strong>Location:</strong> Silver Auditorium, Ahmedabad, Gujarat</p>
+  </div>
+
+  <div class="event-card">
+    <h3><a href="#">Jewelry Exhibition</a></h3>
+    <p><strong>Type:</strong> Exhibition</p>
+    <p><strong>Date:</strong> Aug 11–12</p>
+    <p><strong>Location:</strong> Nirman Bhavan, Ahmedabad, Gujarat</p>
+  </div>
+
+  <div class="event-card">
+    <h3><a href="#">Tennis Tournament</a></h3>
+    <p><strong>Type:</strong> Sports</p>
+    <p><strong>Date:</strong> Jun 25</p>
+    <p><strong>Location:</strong> Government Sports Complex, Ahmedabad, Gujarat</p>
+  </div>
 </div>
 
 
+      <button class="arrow right" onclick="scrollRight()">&#9654;</button>
+    </section>
   </main>
 
   <script src="script.js"></script>
-
 </body>
 </html>

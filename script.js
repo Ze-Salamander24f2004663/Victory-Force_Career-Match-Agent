@@ -1,18 +1,7 @@
-// Wait until the page is fully loaded
-window.addEventListener('DOMContentLoaded', () => {
-  const searchBox = document.getElementById("searchBox");
-  const cards = document.querySelectorAll(".event-card");
+function scrollLeft() {
+  document.getElementById('eventCards').scrollBy({ left: -300, behavior: 'smooth' });
+}
 
-  searchBox.addEventListener("input", () => {
-    const query = searchBox.value.toLowerCase();
-
-    cards.forEach(card => {
-      const text = card.innerText.toLowerCase();
-      if (text.includes(query)) {
-        card.style.display = "block";
-      } else {
-        card.style.display = "none";
-      }
-    });
-  });
-});
+function scrollRight() {
+  document.getElementById('eventCards').scrollBy({ left: 300, behavior: 'smooth' });
+}

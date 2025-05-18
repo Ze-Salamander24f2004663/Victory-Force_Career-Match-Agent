@@ -1,87 +1,84 @@
-/* General body styling */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: #111;
+  background: black url('stars-bg.jpg') repeat;
   color: white;
 }
 
-/* Header styling */
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #222;
-  padding: 1rem;
+  padding: 20px;
 }
 
 .logo {
-  font-size: 1.5rem;
+  font-weight: bold;
+  font-size: 1.5em;
+  color: yellow;
+}
+
+.search {
+  padding: 10px;
+  width: 300px;
+  border-radius: 20px;
+  border: none;
+  background-color: yellow;
+  color: black;
   font-weight: bold;
 }
 
-#searchBox {
-  width: 50%;
-  padding: 0.5rem;
-  border-radius: 5px;
+.auth-buttons .btn {
+  margin-left: 10px;
+  padding: 8px 16px;
+  background-color: dodgerblue;
   border: none;
-}
-
-#loginBtn {
-  padding: 0.5rem 1rem;
-  background-color: #e91e63;
   color: white;
-  border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
 }
 
-/* Main event grid layout */
-#eventGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 1rem;
-  padding: 1rem;
-}
-
-/* Event card styling */
-.event-card {
-  background-color: #1c1c1c;
-  border-radius: 10px;
+.event-carousel {
+  display: flex;
+  align-items: center;
+  padding: 40px 20px;
   overflow: hidden;
-  padding: 1rem;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-.event-card img {
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
+.arrow {
+  font-size: 2em;
+  color: yellow;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.event-cards {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 20px;
+  padding: 10px;
+}
+
+.event-card {
+  background-color: #1a1a1a;
+  padding: 20px;
   border-radius: 10px;
+  min-width: 250px;
+  flex-shrink: 0;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
 }
 
-.badge {
-  display: inline-block;
-  background-color: purple;
-  padding: 3px 8px;
-  border-radius: 5px;
-  font-size: 0.8rem;
-  margin-top: 5px;
+.event-card h3 {
+  margin-top: 0;
 }
-
-.location {
-  display: block;
-  margin-top: 10px;
-  font-size: 0.85rem;
-  color: #ccc;
-}
-/* Style for clickable event title */
-.event-card h3 a {
+.event-link {
   color: white;
   text-decoration: none;
 }
 
-.event-card h3 a:hover {
-  color: #e91e63;
+.event-link:hover {
+  color: yellow;
   text-decoration: underline;
 }
