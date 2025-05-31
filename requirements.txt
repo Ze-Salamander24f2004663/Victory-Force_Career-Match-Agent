@@ -1,0 +1,7 @@
+openai
+transformers
+huggingface_hub
+python-docx
+pdfplumber
+tk
+PyMuPDF
